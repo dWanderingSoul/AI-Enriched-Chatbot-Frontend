@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #0f1117;
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1a1d2e;
+}
+::-webkit-scrollbar-thumb {
+  background: #3b4168;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4f6ef7;
+}
+
+/* Streaming cursor blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.streaming-cursor::after {
+  content: '▋';
+  display: inline-block;
+  animation: blink 0.7s step-end infinite;
+  color: #4f6ef7;
+  margin-left: 1px;
+}
+
+/* Code block styles */
+pre {
+  background: #1e2030 !important;
+  border-radius: 8px !important;
+  padding: 1rem !important;
+  overflow-x: auto;
+  border: 1px solid #2d3258;
+}
+
+code {
+  font-family: 'Fira Code', 'Cascadia Code', monospace !important;
+  font-size: 0.875rem !important;
+}
+
+/* Markdown prose styles */
+.prose-dark p { margin-bottom: 0.75rem; }
+.prose-dark p:last-child { margin-bottom: 0; }
+.prose-dark ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+.prose-dark ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+.prose-dark li { margin-bottom: 0.25rem; }
+.prose-dark h1, .prose-dark h2, .prose-dark h3 {
+  color: #f1f5f9;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+}
+.prose-dark h1 { font-size: 1.4rem; }
+.prose-dark h2 { font-size: 1.2rem; }
+.prose-dark h3 { font-size: 1rem; }
+.prose-dark a { color: #60a5fa; text-decoration: underline; }
+.prose-dark blockquote {
+  border-left: 3px solid #4f6ef7;
+  padding-left: 1rem;
+  color: #94a3b8;
+  margin: 0.75rem 0;
+}
+.prose-dark table { width: 100%; border-collapse: collapse; margin: 0.75rem 0; }
+.prose-dark th { background: #1e2030; padding: 0.5rem; border: 1px solid #2d3258; text-align: left; }
+.prose-dark td { padding: 0.5rem; border: 1px solid #2d3258; }
+.prose-dark strong { color: #f1f5f9; font-weight: 600; }
+.prose-dark em { color: #cbd5e1; }
+.prose-dark code:not(pre code) {
+  background: #1e2030;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.85em;
+  color: #a5f3fc;
+}
