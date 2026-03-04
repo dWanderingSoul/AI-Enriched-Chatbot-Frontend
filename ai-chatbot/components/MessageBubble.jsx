@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import { Check, Copy, User, Bot } from "lucide-react";
 import MarkdownRenderer from "./MarkdownRenderer";
 
@@ -16,12 +16,18 @@ export default function MessageBubble({ message }) {
     } catch {}
   };
 
-  const formattedTime = message.timestamp
-    ? new Date(message.timestamp).toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      })
-    : "";
+  const [formattedTime, setFormattedTime] = useState("");
+
+  useEffect(() => {
+    if (message.timestamp) {
+      setFormattedTime(
+        new Date(message.timestamp).toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        })
+      );
+    }
+  }, [message.timestamp]);
 
   return (
     <div className={`flex gap-3 group ${isUser ? "flex-row-reverse" : "flex-row"} items-end`}>
